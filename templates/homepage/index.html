@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+  </head>
+  <body>
+      <h1>Дарим мороженное друзьям!</h1>
+       <img src="https://cdnimg.rg.ru/img/content/169/50/84/iStock-685816670_d_850.jpg" width="Auto" height="255">
+       <br>
+      <p>
+        {{ friend_output }}
+      </p>
+      <p>
+        {{ city_weather }}
+      </p>     
+      <p>
+        {{ conclusion }}
+      </p>
+      <form action="/" method="post">
+        <h2>Выберите друга</h2>
+          {{ friends|safe }}
+        <h2>Выберите мороженое</h2>
+          {{ icecreams|safe }}
+        <br>
+        <input type="submit" value="Угостить">
+      </form>
+
+  </body>
+</html>
