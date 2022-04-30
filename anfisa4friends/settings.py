@@ -1,12 +1,10 @@
-# Django settings for anfisa4friends project.
 import os
-# SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = '0+-ju&2t-r7==7gs&_@-#q8om7i&lelii&as$b*sjc(j7xcgvv'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ALLOWED_HOSTS = ['*']
@@ -48,8 +46,6 @@ TEMPLATES = [
     },
 ]
 
-# Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -59,11 +55,6 @@ DATABASES = {
 
 ROOT_URLCONF = 'anfisa4friends.urls'
 
-# Internationalization
-# https://docs.djangoproject.com/en/2.2/topics/i18n/
 LANGUAGE_CODE = 'ru'
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'

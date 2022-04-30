@@ -1,7 +1,7 @@
+from anfisa.models import friends_db
+from anfisa.services import what_conclusion, what_temperature, what_weather
 from django.shortcuts import render
 from icecream.models import icecream_db
-from anfisa.models import friends_db
-from anfisa.services import what_weather, what_temperature, what_conclusion
 
 
 def index(request):
@@ -38,7 +38,5 @@ def index(request):
         'friends': friends,
         'friend_output': friend_output,
         'city_weather': city_weather,
-        'conclusion': conclusion,
-
-    }
+        'conclusion': conclusion,}
     return render(request, 'homepage/index.html', context)
