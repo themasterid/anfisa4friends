@@ -1,24 +1,25 @@
 import requests
 
+ERR_WATHER = '<ошибка на сервере погоды. попробуйте позже>'
+ERR_CONNEC = '<сетевая ошибка>'
+
 
 def what_weather(city):
-    url = f'http://wttr.in/{city}'
     weather_parameters = {
         'format': 2,
-        'M': ''
-    }
+        'M': ''}
     try:
-        response = requests.get(url, params=weather_parameters)
+        response = requests.get(
+            f'http://wttr.in/{city}',
+            params=weather_parameters)
     except requests.ConnectionError:
-        return '<сетевая ошибка>'
+        return ERR_CONNEC
     if response.status_code == 200:
         return response.text.strip()
-    else:
-        return '<ошибка на сервере погоды. попробуйте позже>'
+    return ERR_WATHER
 
 def what_temperature(weather):    
-    if (weather == '<сетевая ошибка>' or
-        weather == '<ошибка на сервере погоды. попробуйте позже>'):
+    if weather == ERR_CONNEC or weather == ERR_WATHER:
         return weather
     temperature = weather.split()[1]
     parsed_temperature = ''
@@ -26,7 +27,7 @@ def what_temperature(weather):
         if char == '-':
             parsed_temperature += char
         try:
-            num = int(char)
+            int(char)
             parsed_temperature += char
         except ValueError:
             continue
@@ -34,7 +35,7 @@ def what_temperature(weather):
 
 def what_conclusion(parsed_temperature):
     try:
-        num = int(parsed_temperature)
+        int(parsed_temperature)
         temperature = int(parsed_temperature)
         if temperature < 18:
             return 'Берегись простуды, слишком холодно, не сезон для мороженого!'
