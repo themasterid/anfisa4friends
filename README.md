@@ -22,6 +22,11 @@ pip install -r requirements.txt
 ```
 5.
 ```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+6.
+```bash
 python manage.py runserver
 ```
 Сервер запущен по адресу 127.0.0.1:8000
