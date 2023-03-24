@@ -6,16 +6,15 @@ from icecream.models import icecream_db
 
 def index(request):
     icecreams = ''
-    friends = ''
     city_weather = ''
     friend_output = ''
     selected_icecream = ''
     conclusion = ''
 
-    for friend in friends_db:
-        friends += (f'<input type="radio" name="friend"'
-                   f' required value="{friend}">{friend}<br>')
-
+    friends = ''.join(
+        f'<input type="radio" name="friend" required value="{friend}">{friend}<br>'
+        for friend in friends_db
+    )
     for i in range(len(icecream_db)):
         ice_form = (f'<input type="radio" name="icecream" required'
                     f' value="{icecream_db[i]["name"]}">{icecream_db[i]["name"]}')

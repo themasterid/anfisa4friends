@@ -14,12 +14,10 @@ def what_weather(city):
             params=weather_parameters)
     except requests.ConnectionError:
         return ERR_CONNEC
-    if response.status_code == 200:
-        return response.text.strip()
-    return ERR_WATHER
+    return response.text.strip() if response.status_code == 200 else ERR_WATHER
 
 def what_temperature(weather):    
-    if weather == ERR_CONNEC or weather == ERR_WATHER:
+    if weather in [ERR_CONNEC, ERR_WATHER]:
         return weather
     temperature = weather.split()[1]
     parsed_temperature = ''
